@@ -1,0 +1,24 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.level {
+  display: flex;
+  justify-content: center;
+}
+
+.level__Name {
+  background: #008966;
+  padding: 10px 0;
+  border: 2px solid #079471
+}
+
+.level__Name_left {
+border-radius: 5px 0 0 5px;
+
+}
+
+.level__Name_right {
+border-radius: 0 5px 5px 0;
+}
