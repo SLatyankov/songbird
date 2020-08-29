@@ -3,6 +3,21 @@
   justify-content: space-between;
 }
 
+.logo {
+  font-style: italic;
+  font-size: 60px;
+  margin: 0px 0 10px;
+}
+
+.logo__span {
+  color: #009C76;
+}
+
+.score {
+  font-size: 20px;
+  margin-top: 40px;
+}
+
 .level {
   display: flex;
   justify-content: center;
@@ -10,8 +25,11 @@
 
 .level__Name {
   background: #008966;
-  padding: 10px 0;
-  border: 2px solid #079471
+  padding: 5px 0;
+  border: 2px solid #079471;
+  width: calc(100% / 6);
+  text-align: center;
+  margin: 0;
 }
 
 .level__Name_left {
@@ -21,4 +39,26 @@ border-radius: 5px 0 0 5px;
 
 .level__Name_right {
 border-radius: 0 5px 5px 0;
+}
+
+.active {
+  background: #00BC8C;
+}
+
+@media (max-width: 700px) {
+  .level__Name {
+    display: none;
+  }
+  
+  .active {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .Header {
+    display: block;
+  }
 }

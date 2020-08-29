@@ -8,9 +8,9 @@ export default class AnswerOptions extends Component {
 
 
     return (
-    <ul className="AnswerOptions">
+    <div className="AnswerOptions">
       {this.answerArray}
-    </ul>
+    </div>
     )
   }
 }

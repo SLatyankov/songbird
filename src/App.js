@@ -4,28 +4,25 @@ import Header from './Components/Header/Header';
 import Question from './Components/Question/Question';
 import AnswerOptions from './Components/AnswerOptions/AnswerOptions';
 import Description from './Components/Description/Description';
+import State from './State/State';
 
 export default class App extends Component {
-
-  state = {
-    score: 0,
-    birdName: 'заглушка',
-    birdLatinName: 'латинская заглушка',
-    description: 'латинская заглушка латинская заглушкалатинская заглушкалатинская заглушка'
-  }
 
   render() {
     return (
     <div className="App">
-      <Header score = {this.state.score}/>
+      <Header score = {State.score}/>
       <Question />
-      <AnswerOptions />
-      < Description 
-      birdName = {this.state.birdName}  
-      birdLatinName = {this.state.birdLatinName}
-      description = {this.state.description}
-      / >
-      <button className = "button">Следующий уровень</button>
+      < div className = "App__playingField" >
+        <AnswerOptions />
+        < Description 
+          birdName = {State.birdName}  
+          birdLatinName = {State.birdLatinName}
+          description = {State.description}
+        / >
+      </div>
+      
+      < button className = "button__nextLevel" > Следующий уровень </button>
     </div>
     )
   }
