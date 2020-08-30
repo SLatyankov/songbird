@@ -1,3 +1,66 @@
 .App {
+  margin: auto;
+  max-width: 1140px;
+  padding: 5px;
+}
+
+.App__playingField {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button__nextLevel {
+  width: 100%;
+  background: #303030;
+  border: 1px solid #5a5858;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  color: #e4e4e4;
+  font-size: 16px;
+}
+
+.answerGray {
+  font-size: 20px;
+  border: 1px solid #5a5858;
+  width: calc(100%-20px);
+  margin: 0;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.answerRed {
+  font-size: 20px;
+  color: red;
+  font-style: initial;
+  border: 1px solid #5a5858;
+  width: calc(100%-20px);
+  margin: 0;
+  padding: 10px;
+  font-weight: normal;
+  text-decoration: line-through;
+}
+
+.answerGreen {
+  font-size: 20px;
+  color: #129e29;
+  border: 1px solid #5a5858;
+  width: calc(100%-20px);
+  margin: 0;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.lastPage {
+  font-size: 30px;
+  margin: 200px auto 100px;
+  width: 70%;
   text-align: center;
+}
+
+@media (max-width: 700px) {
+  .App__playingField {
+    display: block;
+    width: 100%;
+  }
 }
