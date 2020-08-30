@@ -14,7 +14,9 @@ export default class Question extends Component {
               this.props.bird.birdName :
               '******'}</p>
           <hr className="Question__hr"></hr>
-          <p>player</p>
+          <audio controls>
+            <sourse src={process.env.PUBLIC_URL + this.props.bird.birdSound} type='audio/mpeg'></sourse>
+          </audio>
         </div>
       </div>
     )

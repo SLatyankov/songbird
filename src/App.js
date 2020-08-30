@@ -390,7 +390,7 @@ export default class App extends Component {
 
     this.setState((state) => {return {activBird: bird[0]}})
 
-    if ( el.target.textContent.includes(this.state.correctAnswer.birdName)) {
+    if ( el.target.textContent.includes(this.state.correctAnswer.birdName)&& this.state.isLevelPassed === false) {
 
       el.target.className = 'answerGreen';
 
@@ -402,7 +402,7 @@ export default class App extends Component {
         isLevelPassed: true
       }})
 
-    } else {
+    } else if (this.state.isLevelPassed === false) {
       el.target.className = 'answerRed';
 
       this.setState( (state) => {
@@ -448,7 +448,6 @@ return ( <div className="App">
       </div>
       
       < button className = {buttonStyle} onClick = {this.goToNextLevel}> Следующий уровень </button>
-      <button onClick = {this.creteRightAnswer}>создать новый правильный</button>
     </div>
     )
 }

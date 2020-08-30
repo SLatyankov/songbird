@@ -15,7 +15,9 @@ export default class Description extends Component {
               <hr></hr>
               <p className="Description__birdDescription">{this.props.bird.birdLatinName}</p>
               <hr></hr>
-              <p>player</p>
+              <audio controls>
+                <sourse src={process.env.PUBLIC_URL + this.props.bird.birdSound} type='audio/mpeg'></sourse>
+              </audio>
             </div>
           </div>
           <p className="Description__birdDescription">{this.props.bird.description}</p>
