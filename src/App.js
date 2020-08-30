@@ -10,13 +10,14 @@ export default class App extends Component {
   state = {
     score: 0,
     level: 1,
+    LevelPoints: 5,
     isLevelPassed: false,
     isAnswerOpen: true,
     rightAnswer: 0,
     correctAnswer: {
-      birdName: 'загл',
-      birdLatinName: 'латинская заглушка',
-      description: 'латинская',
+      birdName: 'Ворон',
+      birdLatinName: 'Corvus corax',
+      description: 'Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет.',
       birdPhoto: '',
       birdSound: '',
     },
@@ -271,16 +272,18 @@ export default class App extends Component {
   }
 
   goToNextLevel = () => {
-    this.setState.level += 1;
-    
+
+    if (this.state.isLevelPassed) {
+    this.setState((state) => {return { level: state.level ++}});
+    console.log(this.state.level)
+    this.setState( {isLevelPassed: false})
     if (this.state.level < 7) {
       this.setState.correctAnswer = this.state.birdSpecies[this.state.level - 1].birds[this.RandomNumber()]
       this.createAnswerArray();
     } else {
       console.log('the end')
-    }
-
-    console.log(this.state.correctAnswer)
+    }}
+    console.log('lvl not passed')
   }
 
   RandomNumber = () => {
@@ -289,19 +292,25 @@ export default class App extends Component {
 
   createAnswerArray() {
     let answerArray = this.state.birdSpecies[this.state.level - 1].birds.map((el) => {
-    return <p className = "answer" key = {el.birdName} onClick = {this.colored}> <span className = "gray">&#8226;</span> {el.birdName}</p>
+    return <pre className = "answerGray" key = {el.birdName} onClick = {this.colored}>   &#8226;   {el.birdName}</pre>
     })
     return answerArray;
 
   }
 
-  colored(el) {
-    if (this.state.correctAnswer.birdName === el.target.text) {
-      el.target.className = 'green';
+  colored = (el) => {
+    if ( el.target.textContent.includes(this.state.correctAnswer.birdName)) {
+      el.target.className = 'answerGreen';
+      this.setState((state) => { 
+        return {score: state.score + state.LevelPoints}
+      });
+      this.setState( {isLevelPassed: true})
     } else {
-      el.target.className = 'red';
+      el.target.className = 'answerRed';
+      this.setState( (state) => {
+        return {LevelPoints: state.LevelPoints--}
+      })
     }
-    
   }
 
   render() {
@@ -312,10 +321,8 @@ export default class App extends Component {
       <Question bird = {this.state.correctAnswer}
           isOpen = {this.state.isAnswerOpen}/>
       < div className = "App__playingField" >
-        < AnswerOptions answers = {
-          this.createAnswerArray()
-        }
-        />
+        < AnswerOptions answers = {this.createAnswerArray()}
+        correctAnswer = {this.state.correctAnswer}/ >
         < Description 
           
         / >

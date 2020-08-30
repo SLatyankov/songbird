@@ -14,7 +14,7 @@ export default class Question extends Component {
         this.props.bird.birdName :
         '******'}</p>
         <hr className="Question__hr"></hr>
-        <player>player</player>
+        <p>player</p>
       </div>
     </div>
     )

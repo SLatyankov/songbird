@@ -20,33 +20,35 @@
     font-size: 16px;
 }
 
-.answer {
-      border: 1px solid #5a5858;
-      width: calc(100%-20px);
-      margin: 0;
-      padding: 10px;
-
+.answerGray{
+  font-size: 20px;
+  border: 1px solid #5a5858;
+  width: calc(100%-20px);
+  margin: 0;
+  padding: 10px;
+  font-weight: bold;
 }
 
-.gray {
-  color:gray;
-  margin: 0 30px;
-  font-size: 30px;
-  line-height: 30px;
-}
-
-.red {
+.answerRed {
+    font-size: 20px;
   color: red;
-  margin: 0 30px;
-  font-size: 30px;
-  line-height: 30px;
+font-style: initial;
+border: 1px solid #5a5858;
+width: calc(100%-20px);
+margin: 0;
+padding: 10px;
+  font-weight: normal;
+  text-decoration: line-through;
 }
 
-.green {
-  color: #008966;
-  margin: 0 30px;
-  font-size: 30px;
-  line-height: 30px;
+.answerGreen {
+  font-size: 20px;
+  color: #129e29;
+  border: 1px solid #5a5858;
+  width: calc(100%-20px);
+  margin: 0;
+  padding: 10px;
+  font-weight: bold;
 }
 
 @media (max-width: 700px) {

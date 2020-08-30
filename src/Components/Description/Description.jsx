@@ -13,7 +13,7 @@ export default class Description extends Component {
             <hr></hr>
             <p className="Description__birdDescription">{this.props.birdLatinName}</p>
             <hr></hr>
-            <player>player</player>
+            <p>player</p>
           </div>  
         </div>
         <p className="Description__birdDescription">{this.props.description}</p>  
