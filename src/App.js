@@ -274,16 +274,29 @@ export default class App extends Component {
   goToNextLevel = () => {
 
     if (this.state.isLevelPassed) {
-    this.setState((state) => {return { level: state.level ++}});
-    console.log(this.state.level)
-    this.setState( {isLevelPassed: false})
-    if (this.state.level < 7) {
-      this.setState.correctAnswer = this.state.birdSpecies[this.state.level - 1].birds[this.RandomNumber()]
+      if (this.state.level < 6) {
+      this.setState((state) => {return { level: state.level ++}});
+      console.log(this.state.level)
+      this.setState( {isLevelPassed: false})
+
+      this.setState((state) => {
+        return {
+          correctAnswer: state.birdSpecies[state.level - 1].birds[this.RandomNumber()]
+        }
+      })
+
+      this.setState((state) => {
+        return {
+          LevelPoints: 5
+        }
+      })
+
       this.createAnswerArray();
     } else {
       console.log('the end')
-    }}
-    console.log('lvl not passed')
+    }} else {
+      console.log('lvl not passed')
+    }
   }
 
   RandomNumber = () => {
