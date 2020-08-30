@@ -20,6 +20,35 @@
     font-size: 16px;
 }
 
+.answer {
+      border: 1px solid #5a5858;
+      width: calc(100%-20px);
+      margin: 0;
+      padding: 10px;
+
+}
+
+.gray {
+  color:gray;
+  margin: 0 30px;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.red {
+  color: red;
+  margin: 0 30px;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.green {
+  color: #008966;
+  margin: 0 30px;
+  font-size: 30px;
+  line-height: 30px;
+}
+
 @media (max-width: 700px) {
   .App__playingField {
     display: block;
