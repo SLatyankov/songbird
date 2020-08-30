@@ -9,7 +9,7 @@ export default class Description extends Component {
       return (
         <div className="Description">
           <div className="Description__wrapper">
-            <img className="Description__birdPhoto" src={silhouette} alt='silhouette' />
+            <img className="Description__birdPhoto" src={this.props.bird.birdPhoto} alt='silhouette' />
             <div className="Description__right_block">
               <p className="Description__birdName">{this.props.bird.birdName}</p>
               <hr></hr>

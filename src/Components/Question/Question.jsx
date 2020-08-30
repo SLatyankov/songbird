@@ -7,7 +7,7 @@ export default class Question extends Component {
 
     return (
       <div className="Question">
-        <img className="silhouette" src={silhouette} alt='silhouette' />
+        <img className="silhouette" src={this.props.isOpen ? this.props.bird.birdPhoto : silhouette} alt='silhouette' />
         <div className="Question__right_block">
           <p className="bird__name">{
             this.props.isOpen ?
