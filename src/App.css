@@ -10,17 +10,17 @@
 }
 
 .button__nextLevel {
-    width: 100%;
-    background: #303030;
-    border: 1px solid #5a5858;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 20px;
-    color: #E4E4E4;
-    font-size: 16px;
+  width: 100%;
+  background: #303030;
+  border: 1px solid #5a5858;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  color: #e4e4e4;
+  font-size: 16px;
 }
 
-.answerGray{
+.answerGray {
   font-size: 20px;
   border: 1px solid #5a5858;
   width: calc(100%-20px);
@@ -30,13 +30,13 @@
 }
 
 .answerRed {
-    font-size: 20px;
+  font-size: 20px;
   color: red;
-font-style: initial;
-border: 1px solid #5a5858;
-width: calc(100%-20px);
-margin: 0;
-padding: 10px;
+  font-style: initial;
+  border: 1px solid #5a5858;
+  width: calc(100%-20px);
+  margin: 0;
+  padding: 10px;
   font-weight: normal;
   text-decoration: line-through;
 }
@@ -49,6 +49,13 @@ padding: 10px;
   margin: 0;
   padding: 10px;
   font-weight: bold;
+}
+
+.lastPage {
+  font-size: 30px;
+  margin: 200px auto 100px;
+  width: 70%;
+  text-align: center;
 }
 
 @media (max-width: 700px) {

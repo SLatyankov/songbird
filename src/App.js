@@ -12,7 +12,6 @@ export default class App extends Component {
     level: 1,
     LevelPoints: 5,
     isLevelPassed: false,
-    isAnswerOpen: false,
     rightAnswer: 0,
     answerArray: [],
     correctAnswer: {
@@ -269,16 +268,73 @@ export default class App extends Component {
           birdSound: '',
         }]
       },
+      {
+        bandName: 'marine',
+        birds: [{
+          birdName: 'Альбатрос',
+          birdLatinName: 'Diomedea exulans',
+          description: 'Альбатрос - самая крупная летающая птица в мире. Размах крыльев достигает три с половиной, вес - десять килограммов. Большую часть жизни альбатросы проводят в воздухе, покрывая над океанскими просторами огромные расстояния',
+          birdPhoto: '',
+          birdSound: '',
+        }, {
+          birdName: 'Олуша',
+          birdLatinName: 'Sula nebouxii',
+          description: 'Особенностью голубоногой олуши является не только насыщенный ярко-синий цвет лапок, но еще и тот факт, что они очень теплые. В то время как другие виды птиц греют кладки своим телом, голубоногая олуша делает это с помощью лапок',
+          birdPhoto: '',
+          birdSound: '',
+        }, {
+          birdName: 'Буревестник',
+          birdLatinName: 'Puffinus griseus',
+          description: 'Размеры буревестниковых разные. Самые маленькие из них в длину составляют до 25 см, самые большие - до 1 м, при размахе крыльев около 2 м. Существует поверье, что появление буревестника в воздухе предвещает бурю, о чем говорит само название птицы.',
+          birdPhoto: '',
+          birdSound: '',
+        }, {
+          birdName: 'Пеликан',
+          birdLatinName: 'Pelecanus',
+          description: 'Пеликаны — обитатели морей и рек. Ходят они неуклюже, но хорошо летают и плавают. Питаются в основном рыбой, устраивают коллективные охоты — выстроившись полукругом хлопают по воде крыльями и клювами и вытесняют напуганную рыбу на мелководье.',
+          birdPhoto: '',
+          birdSound: '',
+        }, {
+          birdName: 'Пингвин',
+          birdLatinName: 'Aptenodytes forsteri',
+          description: 'Самец императорского пингвина достигает роста 130 см, его масса может приближаться к 50 кг. Из всех современных пингвинов этот вид – самый крупный. Питание пингвина состоит из рыбы, кальмаров и криля. Охотятся птицы в океане большими группами.',
+          birdPhoto: '',
+          birdSound: '',
+        }, {
+          birdName: 'Чайка',
+          birdLatinName: 'Larus argentatus',
+          description: 'Чайки населяют берега морей, озёр, рек, водохранилищ, болот, часто гнездятся на островах. С конца прошлого века чайки стали появляться в крупных городах, где устраивает гнёзда на крышах зданий. Все чайки ведут колониальный образ жизни.',
+          birdPhoto: '',
+          birdSound: '',
+        }]
+      },
     ],
 
   }
 
+  createNewGame = () => {
+    this.setState(() => {return {
+          score: 0,
+          level: 1,
+      LevelPoints: 5,
+            isLevelPassed: false,
+            rightAnswer: 0,
+            answerArray: [],
+    correctAnswer: {
+      birdName: 'Ворон',
+      birdLatinName: 'Corvus corax',
+      description: 'Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет.',
+      birdPhoto: '',
+      birdSound: '',
+    },
+
+    }})
+  }
   goToNextLevel = () => {
 
     if (this.state.isLevelPassed) {
       if (this.state.level < 6) {
       this.setState((state) => {return { level: state.level ++}});
-      console.log(this.state.level)
       this.setState( {isLevelPassed: false})
 
       this.setState((state) => {
@@ -292,8 +348,10 @@ export default class App extends Component {
       this.creteRightAnswer();
 
       } else if (this.state.score === 30){
+        this.setState((state) => {return { level: state.level ++}});
         console.log('nais job')
       } else {
+        this.setState((state) => {return { level: state.level ++}});
         console.log('ты старался...')
       }} else {
       console.log('lvl not passed')
@@ -366,8 +424,24 @@ export default class App extends Component {
     let buttonStyle = this.state.isLevelPassed ? "button__nextLevel active"
      : "button__nextLevel";
 
+if(this.state.level > 6 && this.state.score < 30) {
 
-    return (
+  return ( <div className="App">
+      <Header score = {this.state.score}/>
+      <p className = "lastPage">Всё, братан, это конец<br></br> {this.state.score} из 30 возможных... Да ладно, не стоит из-за этого комплексовать </p>
+      < button className = "button__nextLevel active" onClick = {this.createNewGame}> Сыграть заново </button>
+    </div>)
+
+} else if (this.state.level > 6 && this.state.score === 30) {
+
+return ( <div className="App">
+      <Header score = {this.state.score}/>
+      < p className = "lastPage" > 30 из 30...серьёзно ? <br></br> Ну ты и зверюга! <br></br> Даш очки поносить ? </p>
+    </div>)
+
+} else {
+
+  return (
     <div className="App">
       <Header score = {this.state.score}/>
       <Question bird = {this.state.correctAnswer}
@@ -383,6 +457,8 @@ export default class App extends Component {
       < button className = {buttonStyle} onClick = {this.goToNextLevel}> Следующий уровень </button>
     </div>
     )
+}
+
   }
 }
 
