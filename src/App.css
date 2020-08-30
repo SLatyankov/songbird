@@ -1,3 +1,57 @@
 .App {
-  text-align: center;
+  margin: auto;
+  max-width: 1140px;
+  padding: 5px;
+}
+
+.App__playingField {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button__nextLevel {
+    width: 100%;
+    background: #303030;
+    border: 1px solid #5a5858;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+    color: #E4E4E4;
+    font-size: 16px;
+}
+
+.answer {
+      border: 1px solid #5a5858;
+      width: calc(100%-20px);
+      margin: 0;
+      padding: 10px;
+
+}
+
+.gray {
+  color:gray;
+  margin: 0 30px;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.red {
+  color: red;
+  margin: 0 30px;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.green {
+  color: #008966;
+  margin: 0 30px;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+@media (max-width: 700px) {
+  .App__playingField {
+    display: block;
+    width: 100%;
+  }
 }
