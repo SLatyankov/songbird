@@ -14,6 +14,7 @@ export default class App extends Component {
     isLevelPassed: false,
     isAnswerOpen: false,
     rightAnswer: 0,
+    answerArray: [],
     correctAnswer: {
       birdName: 'Ворон',
       birdLatinName: 'Corvus corax',
@@ -21,6 +22,7 @@ export default class App extends Component {
       birdPhoto: '',
       birdSound: '',
     },
+    activBird: {},
     birdSpecies: [{
         bandName: 'warmUp',
         birds: [{
@@ -287,7 +289,7 @@ export default class App extends Component {
 
       this.createAnswerArray();
 
-      this.creteRightAnswer()
+      this.creteRightAnswer();
 
       } else if (this.state.score === 30){
         console.log('nais job')
@@ -303,11 +305,24 @@ export default class App extends Component {
   }
 
   createAnswerArray = () => {
+
     let answerArray = this.state.birdSpecies[this.state.level - 1].birds.map((el) => {
-    return <pre className = "answerGray" key = {el.birdName} onClick = {this.coloredAnswer}>   &#8226;   {el.birdName}</pre>
+      return <pre className = "answerGray" key = {el.birdName} onClick = {this.coloredAnswer}>   &#8226;   {el.birdName}</pre>
     })
 
     return answerArray;
+  }
+
+  answerArrayFilter = (text) => {
+    return this.state.answerArray.filter((el) => text.includes(el.birdName));
+  }
+
+  stateAnswerArray = () => {
+          this.setState((state) => {
+        return {
+          answerArray: state.birdSpecies[state.level - 1].birds
+        }
+      })
   }
 
   creteRightAnswer = () => {
@@ -320,6 +335,12 @@ export default class App extends Component {
   } 
 
   coloredAnswer = (el) => {
+    this.stateAnswerArray(this.answerArray);
+
+    let bird = this.state.answerArray.filter((item) => el.target.textContent.includes(item.birdName))
+
+    this.setState((state) => {return {activBird: bird[0]}})
+
     if ( el.target.textContent.includes(this.state.correctAnswer.birdName)) {
 
       el.target.className = 'answerGreen';
@@ -343,18 +364,19 @@ export default class App extends Component {
 
     let answerArray = this.createAnswerArray();
     let buttonStyle = this.state.isLevelPassed ? "button__nextLevel active"
-     : "button__nextLevel"
+     : "button__nextLevel";
+
 
     return (
     <div className="App">
       <Header score = {this.state.score}/>
       <Question bird = {this.state.correctAnswer}
-          isOpen = {this.state.isAnswerOpen}/>
+          isOpen = {this.state.isLevelPassed}/>
       < div className = "App__playingField" >
         < AnswerOptions answers = {answerArray}
         correctAnswer = {this.state.correctAnswer}/ >
         < Description 
-          
+          bird = {this.state.activBird}
         / >
       </div>
       
