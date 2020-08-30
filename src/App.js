@@ -10,6 +10,7 @@ export default class App extends Component {
   state = {
     score: 0,
     level: 1,
+    levelName: ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'],
     LevelPoints: 5,
     isLevelPassed: false,
     rightAnswer: 0,
@@ -427,7 +428,7 @@ export default class App extends Component {
 if(this.state.level > 6 && this.state.score < 30) {
 
   return ( <div className="App">
-      <Header score = {this.state.score}/>
+      <Header score = {this.state.score} levelName = {this.state.levelName} level = {this.state.level}/>
       <p className = "lastPage">Всё, братан, это конец<br></br> {this.state.score} из 30 возможных... Да ладно, не стоит из-за этого комплексовать </p>
       < button className = "button__nextLevel active" onClick = {this.createNewGame}> Сыграть заново </button>
     </div>)
@@ -435,7 +436,7 @@ if(this.state.level > 6 && this.state.score < 30) {
 } else if (this.state.level > 6 && this.state.score === 30) {
 
 return ( <div className="App">
-      <Header score = {this.state.score}/>
+      <Header score = {this.state.score} levelName = {this.state.levelName} level = {this.state.level}/>
       < p className = "lastPage" > 30 из 30...серьёзно ? <br></br> Ну ты и зверюга! <br></br> Даш очки поносить ? </p>
     </div>)
 
@@ -443,7 +444,7 @@ return ( <div className="App">
 
   return (
     <div className="App">
-      <Header score = {this.state.score}/>
+      <Header score = {this.state.score} levelName = {this.state.levelName} level = {this.state.level}/>
       <Question bird = {this.state.correctAnswer}
           isOpen = {this.state.isLevelPassed}/>
       < div className = "App__playingField" >
