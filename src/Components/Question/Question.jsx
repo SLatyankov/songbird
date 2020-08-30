@@ -7,7 +7,7 @@ export default class Question extends Component {
 
     return (
       <div className="Question">
-        <img className="silhouette" src={this.props.isOpen ? this.props.bird.birdPhoto : silhouette} alt='silhouette' />
+        <img className="silhouette" src={this.props.isOpen ? process.env.PUBLIC_URL + this.props.bird.birdPhoto : silhouette} alt='silhouette' />
         <div className="Question__right_block">
           <p className="bird__name">{
             this.props.isOpen ?
@@ -20,3 +20,4 @@ export default class Question extends Component {
     )
   }
 }
+
