@@ -3,21 +3,28 @@ import './Description.css';
 import silhouette from './../../img/silhouette.jpg';
 
 export default class Description extends Component {
+
   render() {
-    return (
-    <div className="Description">
-        <div className="Description__wrapper">
-          <img className="Description__birdPhoto" src={silhouette} alt='silhouette' />
-          <div className="Description__right_block">
-            <p className="Description__birdName">{this.props.birdName}</p>
-            <hr></hr>
-            <p className="Description__birdDescription">{this.props.birdLatinName}</p>
-            <hr></hr>
-            <player>player</player>
-          </div>  
+    if (this.props.bird) {
+      return (
+        <div className="Description">
+          <div className="Description__wrapper">
+            <img className="Description__birdPhoto" src={this.props.bird.birdPhoto} alt='silhouette' />
+            <div className="Description__right_block">
+              <p className="Description__birdName">{this.props.bird.birdName}</p>
+              <hr></hr>
+              <p className="Description__birdDescription">{this.props.bird.birdLatinName}</p>
+              <hr></hr>
+              <audio controls>
+                <sourse src={process.env.PUBLIC_URL + this.props.bird.birdSound} type='audio/mpeg'></sourse>
+              </audio>
+            </div>
+          </div>
+          <p className="Description__birdDescription">{this.props.bird.description}</p>
         </div>
-        <p className="Description__birdDescription">{this.props.description}</p>  
-    </div>
-    )
+      )
+    } else {
+      return <p>кликай по птицам</p>
+    }
   }
 }

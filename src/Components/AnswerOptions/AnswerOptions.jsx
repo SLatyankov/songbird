@@ -6,9 +6,9 @@ export default class AnswerOptions extends Component {
   render() {
 
     return (
-    <div className="AnswerOptions">
-      {this.props.answers}
-    </div>
+      <div className="AnswerOptions">
+        {this.props.answers}
+      </div>
     )
   }
 }
